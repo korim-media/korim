@@ -1,0 +1,6 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>קוראים תקשורת</title>
+<script>
+// links like korim.org.il/article-radar (from the visit counter or a pasted path) go to the article on the one page
+var p = location.pathname.replace(/^\/+|\/+$/g, "");
+location.replace("/" + (/^article-[a-z0-9]+$/.test(p) || /^[a-z]+$/.test(p) ? "#" + p : ""));
+</script></head><body><p><a href="/">לעמוד הראשי של קוראים תקשורת</a></p></body></html>
