@@ -2088,6 +2088,26 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 .share[data-card] img{height:auto;max-width:100%;box-shadow:0 8px 24px rgba(20,18,15,.18)}
 .share[data-card] .btn{margin-top:14px;display:inline-flex}
 @media (max-width:640px){.share[data-card]{grid-template-columns:minmax(0,1fr)}}</style>
+<style>
+.src-acts{grid-column:2/-1;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.src-acts a{grid-column:auto}
+.src-ap{font:inherit;font-size:13px;font-weight:500;color:var(--muted);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.src-ap:hover{color:var(--pen)}
+.ap-ov{position:fixed;inset:0;z-index:300;background:rgba(20,18,15,.55);display:grid;place-items:center;padding:16px}
+.ap-ov[hidden]{display:none}
+.ap-box{background:var(--surface);color:var(--ink);width:min(100%,520px);max-height:calc(100% - 32px);overflow:auto;border-top:5px solid var(--ink);padding:22px 22px 18px;display:grid;gap:12px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.ap-box h3{font-family:var(--display);font-weight:900;font-size:24px;margin:0}
+.ap-post{font-size:14.5px;background:var(--bg);border:1px solid var(--line);padding:10px 12px;display:grid;gap:4px}
+.ap-post small{color:var(--muted)}
+.ap-box label{display:grid;gap:5px;font-size:14px;font-weight:600}
+.ap-box select,.ap-box textarea,.ap-box input{font:inherit;font-weight:400;font-size:15px;padding:9px 10px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink)}
+.ap-box textarea{min-height:110px;resize:vertical}
+.ap-hp{position:absolute!important;left:-9999px!important}
+.ap-row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.ap-msg{font-size:14px;margin:0}.ap-msg.err{color:var(--pen)}
+.ap-fine{font-size:12.5px;color:var(--muted);margin:0;line-height:1.5}
+.ap-x{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;color:var(--muted);justify-self:end;margin-bottom:-14px}
+</style>
 </head>
 <body>
 <title>קוראים תקשורת</title>
@@ -2836,7 +2856,7 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
         </details>
         <details>
           <summary><span><span class="n">8</span>פרטיות</span></summary>
-          <div><p>האתר אינו אוסף מידע אישי מלבד הפרטים שמוזנים מרצון בטופס בקשת התיקון. הפרטים ישמשו רק לטיפול בפנייה ולא יועברו לצד שלישי, אלא אם הדין מחייב זאת. האתר אינו מפעיל כלי פרסום, אינו יוצר פרופיל משתמש ואינו שותל עוגיות. לספירת כניסות הוא משתמש ב־GoatCounter, שסופר צפיות בעמודים בלי עוגיות ובלי לשמור את כתובת ה־IP שלכם, ומציג לנו רק סיכומים: כמה נכנסו, לאיזה עמוד, מאיזה אתר הגיעו, מאיזו מדינה ומאיזה סוג מכשיר. העדפות תצוגה, כמו מצב קריאה ביקורתית או בחירת עמודים בכלי "הדיאטה שלי", נשמרות בדפדפן שלכם בלבד ואינן מגיעות אלינו. הפונטים נטענים משרת של Google Fonts, שרואה את כתובת ה־IP שלכם כמו בכל אתר שמשתמש בו. פניות בנושא פרטיות, כולל בקשה לעיין במידע שמסרתם או למחוק אותו: <a href="mailto:editor@korim.org.il" dir="ltr">editor@korim.org.il</a>.</p></div>
+          <div><p>האתר אינו אוסף מידע אישי מלבד הפרטים שמוזנים מרצון בטופס בקשת התיקון. הפרטים ישמשו רק לטיפול בפנייה ולא יועברו לצד שלישי, אלא אם הדין מחייב זאת. האתר אינו מפעיל כלי פרסום, אינו יוצר פרופיל משתמש ואינו שותל עוגיות. ערעור על קידוד נשמר בשרת של Cloudflare, ומוגן בבדיקת Turnstile של Cloudflare נגד שליחה אוטומטית. כתובת ה־IP אינה נשמרת, אלא רק טביעה מוצפנת שמתחלפת כל יום ומשמשת להגבלת כמות הערעורים. לספירת כניסות הוא משתמש ב־GoatCounter, שסופר צפיות בעמודים בלי עוגיות ובלי לשמור את כתובת ה־IP שלכם, ומציג לנו רק סיכומים: כמה נכנסו, לאיזה עמוד, מאיזה אתר הגיעו, מאיזו מדינה ומאיזה סוג מכשיר. העדפות תצוגה, כמו מצב קריאה ביקורתית או בחירת עמודים בכלי "הדיאטה שלי", נשמרות בדפדפן שלכם בלבד ואינן מגיעות אלינו. הפונטים נטענים משרת של Google Fonts, שרואה את כתובת ה־IP שלכם כמו בכל אתר שמשתמש בו. פניות בנושא פרטיות, כולל בקשה לעיין במידע שמסרתם או למחוק אותו: <a href="mailto:editor@korim.org.il" dir="ltr">editor@korim.org.il</a>.</p></div>
         </details>
         <details>
           <summary><span><span class="n">9</span>שינויים בתקנון</span></summary>
@@ -2991,6 +3011,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">הממשלה או הקואליציה, באור חיובי</span><span class="bar"><i class="alt" style="width:0.0%"></i></span><span class="val">0</span></div>
         </figure>
       </div>
+
+
+
+
+
+
 
 
 
@@ -3806,6 +3832,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:flash-->
         <section class="agm" aria-labelledby="agm-h-flash">
         <h2 class="rh" id="agm-h-flash">סדר היום של העמוד</h2>
@@ -4081,6 +4113,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">תוכן אישי־רך על אנשי הקואליציה</span><span class="bar"><i class="alt" style="width:3.7%"></i></span><span class="val">1</span></div>
         </figure>
       </div>
+
+
+
+
+
+
 
 
 
@@ -4765,6 +4803,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:push-->
         <section class="agm" aria-labelledby="agm-h-push">
         <h2 class="rh" id="agm-h-push">סדר היום של העמוד</h2>
@@ -5167,6 +5211,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">אזרחים, משפחות ואנשי ציבור</span><span class="bar"><i class="alt" style="width:15.2%"></i></span><span class="val">5</span></div>
         </figure>
       </div>
+
+
+
+
+
+
 
 
 
@@ -5902,6 +5952,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:amram-->
         <section class="agm" aria-labelledby="agm-h-amram">
         <h2 class="rh" id="agm-h-amram">סדר היום של העמוד</h2>
@@ -6390,6 +6446,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:online-->
         <section class="agm" aria-labelledby="agm-h-online">
         <h2 class="rh" id="agm-h-online">סדר היום של העמוד</h2>
@@ -6705,6 +6767,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:danezra-->
         <section class="agm" aria-labelledby="agm-h-danezra">
         <h2 class="rh" id="agm-h-danezra">סדר היום של העמוד</h2>
@@ -6849,6 +6917,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">אזרחים, משפחות ואנשי ציבור</span><span class="bar"><i class="alt" style="width:39.1%"></i></span><span class="val">9</span></div>
         </figure>
       </div>
+
+
+
+
+
+
 
 
 
@@ -8279,7 +8353,8 @@ window.HK2={"F":{"co":1,"op":2,"cop":4,"left":8,"elite":16,"har":32,"pol":64,"cp
     return '<li>' + (feed ? '<span class="src-feed">' + esc(feed.name) + '</span>' : '') +
       '<time>' + p[1] + '</time><div class="src-body"><p>' + (extra || "") + esc(p[3]) + '</p>' + (tags.length ? '<small>' + tags.join(" · ") + '</small>' : '') + '</div>' +
       '<span class="src-lk" title="לייקים">' + (p[5] >= 0 ? "♥ " + fmt(p[5]) : "") + '</span>' +
-      '<a href="' + url(p[0]) + '" target="_blank" rel="noopener">לפוסט ↗</a></li>';
+      '<span class="src-acts"><a href="' + url(p[0]) + '" target="_blank" rel="noopener">לפוסט ↗</a>' +
+      '<button type="button" class="src-ap" data-p="' + esc(p[0]) + '" data-s="' + esc(p[3]) + '" data-c="' + esc([p[7] ? "ביקורת: " + p[7] : "", p[8] ? "במה: " + p[8] : ""].filter(Boolean).join(" · ")) + '" data-f="' + esc(feed ? feed.name : "") + '">ערערו על הקידוד</button></span></li>';
   }
   function drawList(q){
     var L = $l(), out = [];
@@ -9342,4 +9417,68 @@ window.FACES=[{"n":"בנימין נתניהו","src":"data:image/jpeg;base64,/9j
 })();
 </script>
 
+
+<div class="ap-ov" id="apOv" hidden><form class="ap-box" id="apF" role="dialog" aria-modal="true" aria-labelledby="apT" novalidate>
+  <button type="button" class="ap-x" aria-label="סגירה">×</button>
+  <h3 id="apT">ערעור על הקידוד</h3>
+  <div class="ap-post" id="apP"></div>
+  <label for="apK">מה לדעתכם קודד לא נכון?
+    <select id="apK"><option value="crit">הביקורת: על מי, או שאין ביקורת</option><option value="plat">הבמה: למי, או שאין במה</option><option value="tone">מיטיב / פוגע</option><option value="topic">הנושא</option><option value="other">אחר</option></select></label>
+  <label for="apX">למה? מה כתוב בפוסט שמראה את זה
+    <textarea id="apX" required minlength="10" maxlength="1500" placeholder="למשל: הכותרת מצטטת את השר בלי שום ביקורת"></textarea></label>
+  <label for="apE">דוא"ל לחזרה (לא חובה, לא יפורסם)
+    <input id="apE" type="email" autocomplete="email" dir="ltr"></label>
+  <input class="ap-hp" id="apH" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div id="apTs"></div>
+  <div class="ap-row"><button class="btn primary" type="submit" id="apS">שליחת הערעור</button><p class="ap-msg" id="apM" role="status"></p></div>
+  <p class="ap-fine">כל ערעור נקרא. ערעור שהתקבל ייכתב ביומן התיקונים. כתובת ה־IP שלכם לא נשמרת.</p>
+</form></div>
+<script>
+(function(){
+  var API = "https://korim-appeals.korim-appeals.workers.dev/api/appeal", KEY = "0x4AAAAAAFhW2vN-LnIcRsn7", ov = document.getElementById("apOv"), f = document.getElementById("apF");
+  var cur = null, wid = null, last = null, tsLoading = null;
+  var ERR = {captcha:"בדיקת האבטחה לא עברה. נסו שוב.", rate:"שלחתם כמה ערעורים ברצף. נסו שוב מאוחר יותר.", busy:"התקבלו היום הרבה ערעורים. נסו שוב מחר.",
+    dup:"כבר שלחתם ערעור על הפוסט הזה היום.", text:"כתבו לפחות כמה מילים של הסבר.", email:"כתובת הדוא״ל לא תקינה."};
+  function ts(){
+    if(window.turnstile) return Promise.resolve();
+    if(!tsLoading) tsLoading = new Promise(function(ok, no){
+      var s = document.createElement("script"); s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"; s.async = true;
+      s.onload = ok; s.onerror = no; document.head.appendChild(s);
+    });
+    return tsLoading;
+  }
+  function msg(t, err){ var m = document.getElementById("apM"); m.textContent = t; m.className = "ap-msg" + (err ? " err" : ""); }
+  function open(b){
+    last = document.activeElement;
+    cur = {post:b.dataset.p, summ:b.dataset.s, coded:b.dataset.c, page:b.dataset.f || (document.getElementById("srcT")||{}).textContent || ""};
+    document.getElementById("apP").innerHTML = "";
+    var t = document.createElement("b"); t.textContent = cur.summ; document.getElementById("apP").appendChild(t);
+    var c = document.createElement("small"); c.textContent = (cur.page ? cur.page + " · " : "") + (cur.coded || "לא קודדו ביקורת או במה"); document.getElementById("apP").appendChild(c);
+    f.reset(); msg(""); document.getElementById("apS").disabled = false; ov.hidden = false; document.getElementById("apK").focus();
+    ts().then(function(){
+      if(wid === null) wid = turnstile.render("#apTs", {sitekey: KEY, language: "he", theme: "auto"});
+      else turnstile.reset(wid);
+    }).catch(function(){ msg("בדיקת האבטחה לא נטענה. אפשר לכתוב ל־editor@korim.org.il.", true); });
+  }
+  function close(){ ov.hidden = true; if(last) last.focus(); }
+  document.addEventListener("click", function(e){ var b = e.target.closest && e.target.closest(".src-ap"); if(b){ e.preventDefault(); open(b); } });
+  ov.addEventListener("click", function(e){ if(e.target === ov || e.target.closest(".ap-x")) close(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !ov.hidden){ e.stopPropagation(); close(); } }, true);
+  f.addEventListener("submit", function(e){
+    e.preventDefault();
+    var text = document.getElementById("apX").value.trim();
+    if(text.length < 10){ msg(ERR.text, true); document.getElementById("apX").focus(); return; }
+    var token = window.turnstile && wid !== null ? turnstile.getResponse(wid) : "";
+    if(!token){ msg("רגע, בדיקת האבטחה עוד לא הסתיימה.", true); return; }
+    document.getElementById("apS").disabled = true; msg("שולחים…");
+    fetch(API, {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({post:cur.post, page:cur.page, summ:cur.summ, coded:cur.coded,
+      kind:document.getElementById("apK").value, text:text, email:document.getElementById("apE").value.trim(), hp:document.getElementById("apH").value, token:token})})
+    .then(function(r){ return r.json().catch(function(){ return {ok:false}; }); })
+    .then(function(d){
+      if(d.ok){ msg("תודה. הערעור התקבל, וייבדק."); setTimeout(close, 2200); return; }
+      msg(ERR[d.error] || "משהו השתבש. אפשר לכתוב ל־editor@korim.org.il.", true); document.getElementById("apS").disabled = false; turnstile.reset(wid);
+    }).catch(function(){ msg("אין חיבור. נסו שוב בעוד רגע.", true); document.getElementById("apS").disabled = false; });
+  });
+})();
+</script>
 </body></html>
