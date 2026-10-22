@@ -2116,6 +2116,26 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 }
 .anim-off,.anim-off *{animation-play-state:paused!important}
 </style>
+<style>
+.fold-btn{font:inherit;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:10px 18px;
+  background:var(--surface);color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;cursor:pointer}
+.fold-btn:hover{background:var(--ink);color:var(--bg)}
+.fold-btn i{font-style:normal;transition:transform .25s}
+.fold-btn[aria-expanded="true"] i{transform:rotate(180deg)}
+.fold-body.folded{max-height:0;overflow:hidden;margin:0!important;padding:0!important}
+section.is-folded{padding-block:clamp(28px,4vh,44px)!important}
+section.is-folded .sec-head,section.is-folded .ed-top{margin-bottom:0}
+.fold-sm{font-size:14px;padding:8px 14px;margin:6px 0 10px;border-width:1px}
+.clamp4{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.more-btn{font:inherit;font-size:14px;font-weight:600;color:var(--pen);background:none;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:820px){
+  .hero2 .fc-teaser,.hero2 + .rp-board,.rp-hero .clip,figure.clip{display:none!important}
+  .brand small{display:none}
+  main > .quote{display:none}
+  .fold-hint{font-size:14px;color:var(--muted);margin:8px 0 0}
+  .brand b{white-space:nowrap}
+}
+</style>
 </head>
 <body>
 <title>קוראים תקשורת</title>
@@ -3163,6 +3183,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:radar-->
         <section class="agm" aria-labelledby="agm-h-radar">
         <h2 class="rh" id="agm-h-radar">סדר היום של העמוד</h2>
@@ -3868,6 +3894,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:flash-->
         <section class="agm" aria-labelledby="agm-h-flash">
         <h2 class="rh" id="agm-h-flash">סדר היום של העמוד</h2>
@@ -4143,6 +4175,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">תוכן אישי־רך על אנשי הקואליציה</span><span class="bar"><i class="alt" style="width:3.7%"></i></span><span class="val">1</span></div>
         </figure>
       </div>
+
+
+
+
+
+
 
 
 
@@ -4859,6 +4897,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:push-->
         <section class="agm" aria-labelledby="agm-h-push">
         <h2 class="rh" id="agm-h-push">סדר היום של העמוד</h2>
@@ -5261,6 +5305,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">אזרחים, משפחות ואנשי ציבור</span><span class="bar"><i class="alt" style="width:15.2%"></i></span><span class="val">5</span></div>
         </figure>
       </div>
+
+
+
+
+
+
 
 
 
@@ -6028,6 +6078,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:amram-->
         <section class="agm" aria-labelledby="agm-h-amram">
         <h2 class="rh" id="agm-h-amram">סדר היום של העמוד</h2>
@@ -6532,6 +6588,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:online-->
         <section class="agm" aria-labelledby="agm-h-online">
         <h2 class="rh" id="agm-h-online">סדר היום של העמוד</h2>
@@ -6863,6 +6925,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
+
+
       <!--agm:danezra-->
         <section class="agm" aria-labelledby="agm-h-danezra">
         <h2 class="rh" id="agm-h-danezra">סדר היום של העמוד</h2>
@@ -7007,6 +7075,12 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">אזרחים, משפחות ואנשי ציבור</span><span class="bar"><i class="alt" style="width:39.1%"></i></span><span class="val">9</span></div>
         </figure>
       </div>
+
+
+
+
+
+
 
 
 
@@ -9599,6 +9673,72 @@ document.addEventListener("click", function(e){
     });
   }
   [1500, 4000, 9000].forEach(function(ms){ setTimeout(scan, ms); });
+})();
+</script>
+
+<script>
+(function(){
+  var IDS = ["compare", "lab", "categories", "method", "tips", "quiz", "editor", "faq", "terms", "correction", "log"], folds = [];
+  IDS.forEach(function(id){
+    var sec = document.getElementById(id); if(!sec) return;
+    var head = sec.querySelector(".sec-head") || sec.querySelector(".ed-top"); if(!head) return;
+    var wrap = sec.firstElementChild; if(!wrap || !wrap.contains(head)) return;
+    if(head.parentElement !== wrap) wrap.insertBefore(head, wrap.firstChild);
+    var body = document.createElement("div"); body.className = "fold-body folded"; body.id = id + "-fold"; body.inert = true;
+    [].slice.call(wrap.children).forEach(function(c){ if(c !== head) body.appendChild(c); });
+    var b = document.createElement("button"); b.type = "button"; b.className = "fold-btn";
+    b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", body.id);
+    b.innerHTML = "<span>פתחו</span><i aria-hidden=\"true\">⌄</i>";
+    head.after(b); b.after(body); sec.classList.add("is-folded");
+    var f = {sec: sec, body: body, b: b};
+    b.addEventListener("click", function(){ set(f, body.classList.contains("folded")); });
+    folds.push(f);
+  });
+  function set(f, open){
+    f.body.classList.toggle("folded", !open); f.body.inert = !open; f.sec.classList.toggle("is-folded", !open);
+    f.b.setAttribute("aria-expanded", open); f.b.querySelector("span").textContent = open ? "סגירה" : "פתחו";
+    if(open) window.dispatchEvent(new Event("resize"));
+  }
+  function openFor(el){ folds.forEach(function(f){ if(f.sec.contains(el) && f.body.classList.contains("folded")) set(f, true); }); }
+  function fromHash(h){ var id = (h || location.hash).replace(/^#/, ""); var el = id && document.getElementById(id); if(el) openFor(el); return el; }
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]'); if(!a) return;
+    fromHash(a.getAttribute("href"));
+  }, true);
+  window.addEventListener("hashchange", function(){ var el = fromHash(); if(el) setTimeout(function(){ el.scrollIntoView(); }, 30); });
+  var el0 = fromHash(); if(el0) setTimeout(function(){ el0.scrollIntoView(); }, 60);
+
+  /* phones only: the map's filters, the leaders' head-to-head and the wall's reading note open on a button, and the
+     map's long intro shows four lines */
+  if(matchMedia("(max-width:820px)").matches){
+    [["#map .controls", "סינון המפה"], ["#fcNote", "איך לקרוא את הקיר"], ["#fcVs", "ראש מול ראש: השוואה בין שניים"]].forEach(function(x){
+      var el = document.querySelector(x[0]); if(!el) return;
+      var body = document.createElement("div"); body.className = "fold-body folded"; body.inert = true;
+      var b = document.createElement("button"); b.type = "button"; b.className = "fold-btn fold-sm";
+      b.setAttribute("aria-expanded", "false"); b.innerHTML = "<span>" + x[1] + "</span><i aria-hidden=\"true\">⌄</i>";
+      el.parentNode.insertBefore(b, el); el.parentNode.insertBefore(body, el); body.appendChild(el);
+      b.addEventListener("click", function(){
+        var open = body.classList.contains("folded");
+        body.classList.toggle("folded", !open); body.inert = !open; b.setAttribute("aria-expanded", open);
+        if(open) window.dispatchEvent(new Event("resize"));
+      });
+    });
+    // the map's profile panel waits under the list until a page is picked, then opens by itself
+    var det = document.getElementById("detail");
+    if(det){
+      var db = document.createElement("div"); db.className = "fold-body folded"; db.inert = true;
+      var dbt = document.createElement("p"); dbt.className = "fold-hint"; dbt.textContent = "לחצו על עמוד ברשימה כדי לראות את הפרופיל שלו.";
+      det.parentNode.insertBefore(dbt, det); det.parentNode.insertBefore(db, det); db.appendChild(det);
+      new MutationObserver(function(){ if(db.classList.contains("folded")){ db.classList.remove("folded"); db.inert = false; dbt.remove(); } })
+        .observe(det, {childList: true, subtree: true});
+    }
+    var intro = document.querySelector("#map .sec-intro");
+    if(intro){
+      intro.classList.add("clamp4");
+      var m = document.createElement("button"); m.type = "button"; m.className = "more-btn"; m.textContent = "המשך קריאה";
+      intro.after(m); m.addEventListener("click", function(){ intro.classList.remove("clamp4"); m.remove(); });
+    }
+  }
 })();
 </script>
 </body></html>
