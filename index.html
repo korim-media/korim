@@ -1515,6 +1515,9 @@ main > section#map, main > section#compare, main > section#categories, main > se
 main > section#quiz, main > section#terms, main > section#log{background:var(--tint-2);border-block:1px solid var(--line)}
 main > section#faces, main > section#lab, main > section#method, main > section#tips,
 main > section#editor, main > section#correction{background:var(--bg);border-block:0}
+
+/* the tone chips above paint a background; the headline on the faces page colors the words only */
+.fc-head em.t-p,.fc-head em.t-n,.fc-head em.t-m{background:none}
 /* ---- elections 2026: one strip at the top. The rest of the site stays newsprint. ---- */
 .elebar{position:relative;overflow:hidden;background:#0A1E3A;color:#F2F6FF;border-bottom:1px solid rgba(150,185,255,.18)}
 .elebar,.elebar *{font-family:var(--body)!important;letter-spacing:0!important;text-transform:none!important}
@@ -3110,6 +3113,10 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
       <!--agm:radar-->
         <section class="agm" aria-labelledby="agm-h-radar">
         <h2 class="rh" id="agm-h-radar">סדר היום של העמוד</h2>
@@ -3795,6 +3802,10 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
       <!--agm:flash-->
         <section class="agm" aria-labelledby="agm-h-flash">
         <h2 class="rh" id="agm-h-flash">סדר היום של העמוד</h2>
@@ -4070,6 +4081,10 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">תוכן אישי־רך על אנשי הקואליציה</span><span class="bar"><i class="alt" style="width:3.7%"></i></span><span class="val">1</span></div>
         </figure>
       </div>
+
+
+
+
 
 
 
@@ -4746,6 +4761,10 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
       <!--agm:push-->
         <section class="agm" aria-labelledby="agm-h-push">
         <h2 class="rh" id="agm-h-push">סדר היום של העמוד</h2>
@@ -5148,6 +5167,10 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">אזרחים, משפחות ואנשי ציבור</span><span class="bar"><i class="alt" style="width:15.2%"></i></span><span class="val">5</span></div>
         </figure>
       </div>
+
+
+
+
 
 
 
@@ -5875,6 +5898,10 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
       <!--agm:amram-->
         <section class="agm" aria-labelledby="agm-h-amram">
         <h2 class="rh" id="agm-h-amram">סדר היום של העמוד</h2>
@@ -6359,6 +6386,10 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
       <!--agm:online-->
         <section class="agm" aria-labelledby="agm-h-online">
         <h2 class="rh" id="agm-h-online">סדר היום של העמוד</h2>
@@ -6670,6 +6701,10 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
 
 
 
+
+
+
+
       <!--agm:danezra-->
         <section class="agm" aria-labelledby="agm-h-danezra">
         <h2 class="rh" id="agm-h-danezra">סדר היום של העמוד</h2>
@@ -6814,6 +6849,10 @@ body.critic .crit-an{background:color-mix(in srgb,var(--pen) 6%,transparent);fon
           <div class="hbar"><span class="lbl">אזרחים, משפחות ואנשי ציבור</span><span class="bar"><i class="alt" style="width:39.1%"></i></span><span class="val">9</span></div>
         </figure>
       </div>
+
+
+
+
 
 
 
@@ -8826,6 +8865,21 @@ window.FACES=[{"n":"בנימין נתניהו","src":"data:image/jpeg;base64,/9j
     });
     return h + "</ol>";
   }
+  /* The headline counts pages, not mentions: how many pages leaned each way for this person. A share of all mentions
+     would mostly reflect which pages are in the sample. Pages with fewer than three mentions are left out. */
+  function headOf(name, s){
+    var R = s.rows.filter(function(r){ return r.T.length >= 3; });
+    var up = R.filter(function(r){ return r.p > r.n; }).length, dn = R.filter(function(r){ return r.n > r.p; }).length, ev = R.length - up - dn;
+    var P = '<em class="t-p">באור מיטיב</em>', N = '<em class="t-n">באור פוגע</em>';
+    function pages(k){ return k === 1 ? "בעמוד אחד" : "ב־" + k + " עמודים"; }
+    if(!R.length) return "אף עמוד לא הזכיר את " + esc(name) + " שלוש פעמים או יותר";
+    if(!dn && !ev) return (R.length === 1 ? "בעמוד היחיד" : "בכל " + R.length + " העמודים") + " שהזכירו את " + esc(name) + " שלוש פעמים לפחות, רוב האזכורים הציגו אותו " + P;
+    if(!up && !ev) return (R.length === 1 ? "בעמוד היחיד" : "בכל " + R.length + " העמודים") + " שהזכירו את " + esc(name) + " שלוש פעמים לפחות, רוב האזכורים הציגו אותו " + N;
+    var parts = [];
+    if(dn) parts.push(pages(dn) + " רוב האזכורים של " + esc(name) + " הציגו אותו " + N);
+    if(up) parts.push((parts.length ? "ו" : "") + pages(up) + (parts.length ? "" : " רוב האזכורים של " + esc(name) + " הציגו אותו") + " " + P);
+    return parts.join(", ") + (ev ? ". " + (ev === 1 ? "בעמוד אחד" : "ב־" + ev + " עמודים") + " התמונה חצויה" : "");
+  }
   function profile(name, move){
     var s = S[name], rows = s.rows.slice();
     rows.sort(function(a, b){ return tilt(b) - tilt(a) || b.T.length - a.T.length; });
@@ -8835,14 +8889,9 @@ window.FACES=[{"n":"בנימין נתניהו","src":"data:image/jpeg;base64,/9j
       '<figure class="fc-port"><img src="' + IMG[name] + '" alt="דיוקן של ' + esc(name) + '" width="200" height="250" style="--camp:' + campVar(name) + '">' +
       "<figcaption>" + esc(name) + (camp ? " · " + camp : "") + "</figcaption></figure>" +
       '<div class="fc-sum"><h3>' + esc(name) + (camp ? ' <span class="camp-tag ' + CAMP[name] + '">' + camp + "</span>" : "") + "</h3>" +
-      '<p class="fc-head">' + (s.n >= s.p
-        ? pct(s.n, s.all) + "% מהאזכורים של " + esc(name) + " הציגו אותו <em class=\"t-n\">באור פוגע</em>"
-        : pct(s.p, s.all) + "% מהאזכורים של " + esc(name) + " הציגו אותו <em class=\"t-p\">באור מיטיב</em>") + "</p>" +
-      '<p class="fc-lead">' + s.all + " אזכורים ב־" + s.rows.length + " עמודים. " +
-      pct(s.p, s.all) + "% מהם הציגו אותו באור מיטיב, " + pct(s.n, s.all) + "% באור שלילי, והשאר מעורבים או ניטרליים.</p>" +
-      '<div class="tone-sum"><span class="t-n" style="flex:' + s.n + '">' + (s.n ? pct(s.n, s.all) + "% פוגע" : "") + "</span>" +
-      '<span class="t-m" style="flex:' + s.m + '">' + (s.m ? pct(s.m, s.all) + "%" : "") + "</span>" +
-      '<span class="t-p" style="flex:' + s.p + '">' + (s.p ? pct(s.p, s.all) + "% מיטיב" : "") + "</span></div>";
+      '<p class="fc-head">' + headOf(name, s) + "</p>" +
+      '<p class="fc-lead">' + s.all + " אזכורים ב־" + s.rows.length + " עמודים. אין כאן אחוז כולל: הוא היה תלוי בעיקר בשאלה אילו עמודים בחרנו לבדוק, " +
+      "ולא בתקשורת עצמה. כל שורה למטה היא עמוד אחד, ונמדדת בנפרד.</p>";
     if(best && worst){
       h += '<div class="fc-ext">' +
         '<div class="fc-x worst"><span>הקצה הפוגע</span><b>' + esc(worst.f.name) + "</b><em>" +
